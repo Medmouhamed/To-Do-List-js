@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="TO-DO.css">
+</head>
+<body>
+  <div class="container">
+    <h1>To-Do List</h1>
+
+    <div class="input-box">
+      <input type="text" id="taskInput" placeholder="Add a new task...">
+      <button id="addBtn" onclick="add()">Add</button>
+    </div>
+
+    <ul id="taskList">
+
+    </ul>
+    <button onclick="deleteall()">delete all</button>
+  </div>
+
+  <script>
+    let input = document.querySelector("#taskInput");
+    let btn = document.querySelector("#addBtn");
+    let uu = document.querySelector("#taskList");
+
+    let lists = [];
+
+    function add(){
+        let List = input.value;
+        if(input.value === ''){
+          return;
+        }else{
+          lists.push(List);
+        }
+        show();
+    }
+
+    function show(){
+        uu.innerHTML= "";
+          for(let i=0;i<lists.length;i++){
+            let li = document.createElement("li");
+            let btn = document.createElement("button");
+            let btn1 = document.createElement("button");
+            li.innerHTML=(lists[i]);
+            btn.innerHTML ="delete";
+            btn1.innerHTML ="update";
+            let finishBtn = document.createElement("button");
+            finishBtn.innerHTML = "◻️";
+            finishBtn.addEventListener("click", function () {
+            if (li.classList.contains("completed")) {
+              li.classList.remove("completed");
+              finishBtn.innerHTML = "◻️"; 
+            } else {
+               li.classList.add("completed");
+               finishBtn.innerHTML = "✔️"; 
+         }
+     }); 
+            btn.addEventListener("click",function(){
+                lists.splice(i, 1);
+                show();
+            })
+            btn1.addEventListener("click", function () {
+                let editInput = document.createElement("input");
+                editInput.type = "text";
+                editInput.value = lists[i];
+                li.innerHTML = "";
+                li.appendChild(editInput);
+                editInput.focus();
+                editInput.addEventListener("keypress", function (e) {
+                  if (e.key === "Enter") {
+                     saveEdit();
+                   }
+                 });
+                function saveEdit() {
+                let newText = editInput.value.trim();
+                if (newText !== "") {
+                lists[i] = newText; 
+                }
+                show(); 
+                 }
+               });
+
+            uu.appendChild(li);
+            li.appendChild(btn);
+            li.appendChild(btn1);
+            li.appendChild(finishBtn);
+        }
+        }
+        function deleteall(){
+          lists = [];
+          show();
+        }
+  </script>
+</body>
+</html>

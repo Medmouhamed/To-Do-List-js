@@ -1,0 +1,163 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #6c63ff, #3a1c71);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  background: #fff;
+  width: 400px;
+  padding: 25px;
+  border-radius: 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #3a1c71;
+}
+
+.input-box {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#taskInput {
+  flex: 1;
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px;
+}
+
+#taskInput:focus {
+  border-color: #6c63ff;
+}
+
+#addBtn {
+  background: #6c63ff;
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-left: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#addBtn:hover {
+  background: #5848c2;
+}
+
+ul {
+  list-style: none;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+ul li {
+  background: #f4f4f4;
+  margin-bottom: 10px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.3s;
+}
+
+ul li:hover {
+  background: #e8e8e8;
+}
+
+ul li button {
+  border: none;
+  border-radius: 6px;
+  padding: 6px 10px;
+  margin-left: 5px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.3s;
+}
+
+ul li button:hover {
+  transform: scale(1.05);
+  opacity: 0.9;
+}
+
+
+ul li button:first-of-type {
+  background: #ff5252;
+  color: white;
+}
+
+ul li button:first-of-type:hover {
+  background: #d84343;
+}
+
+
+ul li button:last-of-type {
+  background: #00b894;
+  color: white;
+}
+
+ul li button:last-of-type:hover {
+  background: #009874;
+}
+
+ul li input[type="text"] {
+  flex: 1;
+  padding: 6px 8px;
+  font-size: 15px;
+  border: 2px solid #6c63ff;
+  border-radius: 6px;
+  outline: none;
+  transition: 0.3s;
+}
+
+ul li input[type="text"]:focus {
+  border-color: #3a1c71;
+  background-color: #f0f0ff;
+}
+
+button[onclick="deleteall()"] {
+  background: #e17055;
+  color: white;
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+button[onclick="deleteall()"]:hover {
+  background: #cf5c41;
+}
+
+ul::-webkit-scrollbar {
+  width: 6px;
+}
+ul::-webkit-scrollbar-thumb {
+  background-color: #6c63ff;
+  border-radius: 4px;
+}
+
+li.completed {
+  text-decoration: line-through;
+  color: gray;
+}
